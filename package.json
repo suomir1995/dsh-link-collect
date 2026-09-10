@@ -1,0 +1,70 @@
+{
+  "name": "dsh-link-collect",
+  "version": "0.1.0",
+  "description": "DSH bundle: 链接收藏(收藏夹=一个 md 文件)——Web UI 页面 + host 服务,把收藏的链接(标题/简介/图标/标签/自由正文)持久化为本地 Markdown 文件,可选本地库目录并即时切换。",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build:client": "tsdown && node ./scripts/rename-client.mjs",
+    "prepack": "npm run build:client",
+    "smoke:host": "node ./scripts/smoke-host.mjs",
+    "smoke:client": "node ./scripts/smoke-client.mjs",
+    "smoke:boot": "node ./scripts/loader-boot.mjs"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suomir1995/dsh-link-collect.git"
+  },
+  "homepage": "https://github.com/suomir1995/dsh-link-collect#readme",
+  "bugs": {
+    "url": "https://github.com/suomir1995/dsh-link-collect/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "dsh",
+    "cordis",
+    "bookmarks",
+    "markdown"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": "^0.1.2-alpha.2",
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    },
+    "@deepseek-ai/schemastery": {
+      "optional": true
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-renderer"
+      ]
+    }
+  }
+}

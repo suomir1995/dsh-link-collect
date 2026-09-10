@@ -1,0 +1,8 @@
+# dsh-link-collect bundle layer.
+
+# One host-only tool plugin row. `config` is optional; every key has a
+# schema default inside the module (see the exported `Config` in index.js).
+# Later profile/home layers may override this row's whole `config` value.
+- insert:
+    - id: link-collect
+      name: dsh-link-collect
