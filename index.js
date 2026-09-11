@@ -44,7 +44,7 @@ export const name = 'link-collect'
 export const inject = []
 
 /** Plugin version, mirrored in the module header. */
-export const VERSION = '0.1.0'
+export const VERSION = '0.1.1'
 
 /** Browser UI route family (host half of the client UI). */
 export const ROUTE_PREFIX = '/api/link-collect'
